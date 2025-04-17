@@ -1,0 +1,12 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginPageApp.LoginPage"
+             Title="Login">
+    <StackLayout Padding="30">
+        <Label Text="Welcome" FontSize="24" HorizontalOptions="Center" />
+        <Entry x:Name="EmployeeIDEntry" Placeholder="Employee ID" Keyboard="Numeric"/>
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+        <Button Text="Login" Clicked="OnLoginButtonClicked" />
+        <Label x:Name="LoginResultLabel" TextColor="Red"/>
+    </StackLayout>
+</ContentPage>
