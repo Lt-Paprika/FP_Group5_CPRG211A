@@ -4,7 +4,6 @@
 */
 
 /* Drop Table commands */
-DROP TABLE IF EXISTS CPRG211_Stat_Tracker;
 DROP TABLE IF EXISTS CPRG211_Stat_Days;
 DROP TABLE IF EXISTS CPRG211_Wages;
 DROP TABLE IF EXISTS CPRG211_Shift_Log;
@@ -33,12 +32,11 @@ CREATE TABLE CPRG211_Employee (
 /* Creating the schedule table, 
 this table allows a overlook at the schedule over a two week period 
 allows a better seperation of data for pay or management*/
-CREATE TABLE CPRG211_Shchedule (
+CREATE TABLE CPRG211_Schedule (
     Employee_ID INT(9) NOT NULL,
     Current_Payperiod DATE NOT NULL,
     Requested_Off BOOLEAN,
     Approval_Status ENUM('Pending', 'Approved', 'Denied'),
-    Stat_Eligible BOOLEAN,
     Manager_ID INT(9),
     PRIMARY KEY (Employee_ID, Current_Payperiod),
     FOREIGN KEY (Employee_ID) REFERENCES CPRG211_Employee(Employee_ID),
@@ -50,13 +48,13 @@ CREATE TABLE CPRG211_Shchedule (
 /* Schedule detail table creation.
 Table is for the creation of staff schedules and organizing and tacking intended shifts */
 CREATE TABLE CPRG211_Schedule_Detail (
+    Schedule_ID INT AUTO_INCREMENT PRIMARY KEY,
     Employee_ID INT(9) NOT NULL,
     Scheduled_Date DATE NOT NULL,
     Start_Time TIME,
     End_Time TIME,
     Break_Duration INT,
-    Stat_Eligible BOOLEAN,
-    PRIMARY KEY (Employee_ID, Scheduled_Date),
+    Stat_Day BOOLEAN,
     FOREIGN KEY (Employee_ID) REFERENCES CPRG211_Employee(Employee_ID),
     CONSTRAINT SYS_SCHDTL_TIME_CK CHECK (Start_Time < End_Time),
     CONSTRAINT SYS_SCHD_UK UNIQUE (Employee_ID, Scheduled_Date)
@@ -66,18 +64,18 @@ CREATE TABLE CPRG211_Schedule_Detail (
 CREATE TABLE CPRG211_Shift_Log (
     Shift_ID INT PRIMARY KEY,
     Employee_ID INT NOT NULL,
-    Shift_Date DATE,
     Clock_In TIME,
     Clock_Out TIME,
     Break_Start TIME,
     Break_End TIME,
+    FOREIGN KEY (Shift_ID) REFERENCES CPRG211_Schedule_Detail(Schedule_ID),
     FOREIGN KEY (Employee_ID) REFERENCES CPRG211_Employee(Employee_ID),
     CONSTRAINT SYS_SHFT_CLOCK_CK CHECK (Clock_In < Clock_Out),
     CONSTRAINT SYS_SHFT_BRK_CK CHECK (
         Break_Start IS NULL OR
         (Clock_In < Break_Start AND Break_Start < Break_End AND Break_End < Clock_Out)
     ),
-    CONSTRAINT SYS_SHIFT_UK UNIQUE (Employee_ID, Shift_Date)
+    CONSTRAINT SYS_SHIFT_UK UNIQUE (Employee_ID, Shift_ID)
 );
 
 
@@ -86,21 +84,7 @@ CREATE TABLE CPRG211_Stat_Days (
     Stat_Code  INT(2) PRIMARY KEY,
     Workday VARCHAR(15) NOT NULL,
     Stat_Name VARCHAR(50) NOT NULL,
-    Paid_Optional_Stat ENUM ('yes', 'No')
-);
-
-/*Tracking the stats for employees, Table is created to assist in organizing data related to stat pay
-E.G. If an employee has worked 5/9 last regular days of a stats weekday they are entitled to avg days pay
-as well as 1.5 wages for hours worked on that day*/
-CREATE TABLE CPRG211_Stat_Tracker (
-    Employee_ID INT NOT NULL,
-    Stat_Code INT NOT NULL,
-    Eligible BOOLEAN NOT NULL,
-    Stat_Avg_Hours DECIMAL(4, 2),
-    PRIMARY KEY (Employee_ID, Stat_Code),
-    FOREIGN KEY (Employee_ID) REFERENCES CPRG211_Employee(Employee_ID),
-    FOREIGN KEY (Stat_Code) REFERENCES CPRG211_Stat_Days(Stat_Code),
-    CONSTRAINT SYS_STRACK_HRS_CK CHECK (Stat_Avg_Hours >= 0)
+    Paid_Optional_Stat ENUM ('Paid', 'No')
 );
 
 /* Table creation to track employee pay data */
@@ -111,13 +95,9 @@ CREATE TABLE CPRG211_Wages (
     Salary DECIMAL(10, 2),         -- Allows up to 99999999.99
     Hourly_Rate DECIMAL(6, 2),     -- Up to 9999.99
     Hours_Worked DECIMAL(5, 2),    -- Up to 999.99 hours
-    Stat_Pay DECIMAL(10, 2),
-    Total_Pay DECIMAL(10, 2),
     PRIMARY KEY (Employee_ID, Payperiod_Start),
     FOREIGN KEY (Employee_ID) REFERENCES CPRG211_Employee(Employee_ID),
     CONSTRAINT SYS_WAGES_PAY_CK CHECK (
         (Salary IS NOT NULL AND Hourly_Rate IS NULL) OR
-        (Salary IS NULL AND Hourly_Rate IS NOT NULL)
-    ),
-    CONSTRAINT SYS_WAGES_TPAY_CK CHECK (Total_Pay > 0)
+        (Salary IS NULL AND Hourly_Rate IS NOT NULL))
 );
