@@ -18,12 +18,10 @@ CREATE TABLE CPRG211_Employee (
     Hash_Password VARCHAR(64) NOT NULL,
     First_Name VARCHAR(50) NOT NULL,
     Last_Name VARCHAR(50) NOT NULL,
-    Employment_Status ENUM('Active', 'Terminated', 'Leave', 'Retired') NOT NULL,
+    Employment_Status TEXT NOT NULL CHECK (Employment_Status IN ('Active', 'Terminated', 'Leave', 'Retired')),
     Phone_Number VARCHAR(12) NOT NULL,
     Email VARCHAR(100),
-    Employee_Role ENUM('Employee', 'Manager') NOT NULL,
-    CONSTRAINT SYS_EMP_PH_CK CHECK (Phone_Number REGEXP '^[0-9]{3}\\.[0-9]{3}\\.[0-9]{4}$'), -- 999.999.9999 format
-    CONSTRAINT SYS_EMP_EML_CK CHECK (Email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'), -- basic email regex
+    Employee_Role TEXT NOT NULL CHECK (Employee_Role IN ('Employee', 'Manager')),
     CONSTRAINT SYS_EMP_ROLE_CK CHECK (Employee_Role IN ('Employee', 'Manager')),
     CONSTRAINT SYS_EMP_STS_CK CHECK (Employment_Status IN ('Active', 'Terminated', 'Leave', 'Retired'))
 );
@@ -36,7 +34,7 @@ CREATE TABLE CPRG211_Schedule (
     Employee_ID INT(9) NOT NULL,
     Current_Payperiod DATE NOT NULL,
     Requested_Off BOOLEAN,
-    Approval_Status ENUM('Pending', 'Approved', 'Denied'),
+    Approval_Status TEXT NOT NULL CHECK (Approval_Status IN ('Pending', 'Approved', 'Denied')),
     Manager_ID INT(9),
     PRIMARY KEY (Employee_ID, Current_Payperiod),
     FOREIGN KEY (Employee_ID) REFERENCES CPRG211_Employee(Employee_ID),
@@ -84,7 +82,7 @@ CREATE TABLE CPRG211_Stat_Days (
     Stat_Code  INT(2) PRIMARY KEY,
     Workday VARCHAR(15) NOT NULL,
     Stat_Name VARCHAR(50) NOT NULL,
-    Paid_Optional_Stat ENUM ('Paid', 'No')
+    Paid_Optional_Stat TEXT NOT NULL CHECK (Paid_Optional_Stat IN ('Paid', 'No'))
 );
 
 /* Table creation to track employee pay data */

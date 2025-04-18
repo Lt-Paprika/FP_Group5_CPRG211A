@@ -34,23 +34,35 @@ build_metadata.AdditionalFiles.ManifestResourceName = Group5.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Coding/CPRG212/Final_Project/Group5/Group5/EmployeeDashboard.xaml]
+[C:/Coding/CPRG212/Final_Project/Group5/Group5/Pages/Change_Password.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Group5.EmployeeDashboard.xaml
-build_metadata.AdditionalFiles.TargetPath = EmployeeDashboard.xaml
-build_metadata.AdditionalFiles.RelativePath = EmployeeDashboard.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Group5.Pages.Change_Password.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Change_Password.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Change_Password.xaml
 
-[C:/Coding/CPRG212/Final_Project/Group5/Group5/login.xaml]
+[C:/Coding/CPRG212/Final_Project/Group5/Group5/Pages/Edit_Employee.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Group5.login.xaml
-build_metadata.AdditionalFiles.TargetPath = login.xaml
-build_metadata.AdditionalFiles.RelativePath = login.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Group5.Pages.Edit_Employee.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Edit_Employee.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Edit_Employee.xaml
 
-[C:/Coding/CPRG212/Final_Project/Group5/Group5/ManagementDashboard.xaml]
+[C:/Coding/CPRG212/Final_Project/Group5/Group5/Pages/EmployeeDashboard.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = Group5.ManagementDashboard.xaml
-build_metadata.AdditionalFiles.TargetPath = ManagementDashboard.xaml
-build_metadata.AdditionalFiles.RelativePath = ManagementDashboard.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Group5.Pages.EmployeeDashboard.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\EmployeeDashboard.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\EmployeeDashboard.xaml
+
+[C:/Coding/CPRG212/Final_Project/Group5/Group5/Pages/login.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Group5.Pages.login.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\login.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\login.xaml
+
+[C:/Coding/CPRG212/Final_Project/Group5/Group5/Pages/ManagementDashboard.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Group5.Pages.ManagementDashboard.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ManagementDashboard.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ManagementDashboard.xaml
 
 [C:/Coding/CPRG212/Final_Project/Group5/Group5/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

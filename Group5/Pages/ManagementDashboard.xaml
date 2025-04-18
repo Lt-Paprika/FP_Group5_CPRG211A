@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Group5.ManagementDashboard"
+             Title="Manager Dashboard">
+
+    <!-- Using Grid instead of StackLayout -->
+    <Grid Padding="20" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+        
+        <!-- Button to view current pay period -->
+        <Button Text="View Current Pay Period"
+                Clicked="OnViewPayPeriodClicked"
+                Grid.Row="0"
+                HorizontalOptions="Fill"
+                Margin="0,10,0,10" />
+
+        <!-- Label to display the pay period data -->
+        <Label x:Name="PayPeriodLabel"
+               Text="Pay Period Information will appear here"
+               FontSize="Medium"
+               HorizontalOptions="Center"
+               Grid.Row="1"
+               Margin="0,10,0,10" />
+
+        <!-- Button to generate a labor report -->
+        <Button Text="Generate Labor Report"
+                Clicked="OnGenerateReportsClicked"
+                Grid.Row="2"
+                HorizontalOptions="Fill"
+                Margin="0,10,0,10" />
+
+        <!-- Button to edit employee info -->
+        <Button Text="Edit Employee Info"
+                Clicked="OnEditEmployeeClicked"
+                Grid.Row="3"
+                HorizontalOptions="Fill"
+                Margin="0,10,0,10" />
+    </Grid>
+</ContentPage>
