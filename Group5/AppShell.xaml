@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Group5"
-    x:Class="Group5.AppShell">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Group5"
+       x:Class="Group5.AppShell">
 
+    <!-- Login Page -->
     <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+
+    <!-- Employee Dashboard -->
     <ShellContent Route="EmployeeDashboard" ContentTemplate="{DataTemplate local:EmployeeDashboard}" />
+
+    <!-- Management Dashboard -->
     <ShellContent Route="ManagementDashboard" ContentTemplate="{DataTemplate local:ManagementDashboard}" />
 
 </Shell>

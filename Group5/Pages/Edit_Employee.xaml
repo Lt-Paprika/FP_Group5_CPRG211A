@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Group5.EditEmployeePage"
+             Title="Edit Employee">
+
+    <StackLayout Padding="20" Spacing="10">
+        <!-- Employee ID Section -->
+        <Label Text="Enter Employee ID"
+               FontSize="Medium"
+               HorizontalOptions="Start" />
+
+        <Entry x:Name="EmployeeIDEntry"
+               Placeholder="Employee ID"
+               Keyboard="Numeric"
+               HorizontalOptions="Fill" />
+
+        <Button Text="Search Employee"
+                Clicked="OnSearchEmployeeClicked"
+                HorizontalOptions="Fill"
+                Margin="0,10" />
+
+        <!-- Employee Info for Editing -->
+        <Label x:Name="EmployeeNameLabel" Text="Name" />
+
+        <Entry x:Name="FirstNameEntry"
+               Placeholder="First Name"
+               HorizontalOptions="Fill" />
+
+        <Entry x:Name="LastNameEntry"
+               Placeholder="Last Name"
+               HorizontalOptions="Fill" />
+
+        <Button Text="Save Changes"
+                Clicked="OnSaveChangesClicked"
+                HorizontalOptions="Fill"
+                Margin="0,10" />
+    </StackLayout>
+</ContentPage>

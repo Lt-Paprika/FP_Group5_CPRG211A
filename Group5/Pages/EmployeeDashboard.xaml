@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Group5.EmployeeDashboard"
+             BackgroundColor="White">
+
+    <StackLayout Padding="20" Spacing="20">
+        <!-- Clock In Button -->
+        <Button Text="Clock In" Clicked="OnClockInButtonClicked" />
+
+        <!-- Clock Out Button -->
+        <Button Text="Clock Out" Clicked="OnClockOutButtonClicked" />
+
+        <!-- Break Start Button -->
+        <Button Text="Start Break" Clicked="OnBreakStartButtonClicked" />
+
+        <!-- Break End Button -->
+        <Button Text="End Break" Clicked="OnBreakEndButtonClicked" />
+        
+        <!-- Change Password -->
+        <Button Text="Change Password" Clicked="OnChangePasswordButtonClicked" />
+
+    </StackLayout>
+</ContentPage>

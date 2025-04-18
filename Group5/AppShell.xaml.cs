@@ -1,6 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-using SignInMaui.Views;
+﻿using Group5.Pages;
 
 namespace Group5;
 
@@ -9,7 +7,10 @@ public partial class AppShell : Shell
     public AppShell()
     {
         InitializeComponent();
-        Routing.RegisterRoute("mainview", typeof(MainView));
-        Routing.RegisterRoute("claimsview", typeof(ClaimsView));
+
+        // Register routes for different pages (make sure your pages are in the correct namespace)
+        Routing.RegisterRoute("login", typeof(LoginPage)); // Registering LoginPage route
+        Routing.RegisterRoute("employeeDashboard", typeof(EmployeeDashboard)); // Registering EmployeeDashboard route
+        Routing.RegisterRoute("managementDashboard", typeof(ManagementDashboard)); // Registering ManagementDashboard route
     }
 }
